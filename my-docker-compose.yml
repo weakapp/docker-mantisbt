@@ -1,0 +1,26 @@
+version: '2.0'
+services:
+  mantisbt:
+    container_name: mantisbt
+    image: test:1.0
+    ports:
+      - "8989:80"
+    links:
+      - mysql
+    restart: always
+    volumes:
+      - ./config:/var/www/html/config
+      - ./custom_config:/custom_config:ro
+
+  mysql:
+     container_name: mariadb
+     image: mariadb:latest
+     environment:
+       - MYSQL_ROOT_PASSWORD=root
+       - MYSQL_DATABASE=bugtracker
+       - MYSQL_USER=mantis
+       - MYSQL_PASSWORD=mantis
+     restart: always
+     volumes:
+       - ./mysql:/var/lib/mysql
+

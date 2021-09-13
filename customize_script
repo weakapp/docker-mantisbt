@@ -1,0 +1,20 @@
+if [ -f /custom_config/php.ini ]; then
+    cp /custom_config/php.ini /usr/local/etc/php/php.ini
+    cat /custom_config/php.ini | grep "date.timezone" || echo 'date.timezone = "${MANTIS_TIMEZONE}"' > /usr/local/etc/php/php.ini
+else
+    echo 'date.timezone = "${MANTIS_TIMEZONE}"' > /usr/local/etc/php/php.ini
+fi
+
+if [ -f /custom_config/timezone ]; then
+    ln -sf /usr/share/zoneinfo/`cat /custom_config/timezone` /etc/localtime
+else
+    ln -sf /usr/share/zoneinfo/${MANTIS_TIMEZONE} /etc/localtime
+fi
+
+if [ -d /var/www/html/config ]; then
+    chown www-data:www-data /var/www/html/config
+fi
+
+if [ -f /custom_config/disable_admin ]; then
+  chmod 000 /var/www/html/admin
+fi
