@@ -90,3 +90,16 @@ $g_ldap_follow_referrals = OFF;
 $g_ldap_uid_field = 'sAMAccountName';
 ```
 
+## Disabling admin folder
+
+MantisBT recommends to disable access to the admin folder once the initial
+configuration has been done.
+
+To do so, add `disable_admin` file in `custom_config` directory and restart the container
+
+## PHP settings
+
+MantisBT recommends to disable access to the admin folder once the initial
+configuration has been done.
+
+To do so, add `disable_admin` file in `custom_config` directory and restart the container
