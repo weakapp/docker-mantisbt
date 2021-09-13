@@ -99,7 +99,5 @@ To do so, add `disable_admin` file in `custom_config` directory and restart the 
 
 ## PHP settings
 
-MantisBT recommends to disable access to the admin folder once the initial
-configuration has been done.
+To use custom php.ini, add `php.ini` file in `custom_config` directory and restart the container
 
-To do so, add `disable_admin` file in `custom_config` directory and restart the container
