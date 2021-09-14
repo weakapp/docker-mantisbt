@@ -10,6 +10,7 @@ services:
     restart: always
     volumes:
       - ./config:/var/www/html/config
+      - ./plugins:/plugins:ro
       - ./custom_config:/custom_config:ro
 
   mysql:
