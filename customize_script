@@ -11,6 +11,20 @@ else
     ln -sf /usr/share/zoneinfo/${MANTIS_TIMEZONE} /etc/localtime
 fi
 
+if [ -f /custom_config/disable_admin ]; then
+    echo "Disable Admin Folder"
+    chmod 000 /var/www/html/admin
+else
+    echo "Enable Admin Folder"
+    chmod 775 /var/www/html/admin
+fi
+
+# to customize mantisbt pages
+if [ -d /custom_config/patches ]; then
+    cd /custom_config/patches
+    cp -dRv * /var/www/html
+fi
+
 if [ -d /var/www/html/config ]; then
     chown www-data:www-data /var/www/html/config
 fi
@@ -26,10 +40,3 @@ if [ -d /plugins ]; then
     done
 fi
 
-if [ -f /custom_config/disable_admin ]; then
-    echo "Disable Admin Folder"
-    chmod 000 /var/www/html/admin
-else
-    echo "Enable Admin Folder"
-    chmod 775 /var/www/html/admin
-fi
