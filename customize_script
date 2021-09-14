@@ -15,6 +15,21 @@ if [ -d /var/www/html/config ]; then
     chown www-data:www-data /var/www/html/config
 fi
 
+if [ -d /plugins ]; then
+    cd /plugins
+    dirs=`ls`
+    for dir in $dirs; do
+        if [ -d $dir -a ! -d /var/www/html/plugins/$dir ]; then
+            echo "Symbolic /plugins/$dir to /var/www/html/plugins/$dir"
+            ln -sf /plugins/$dir /var/www/html/plugins/$dir
+        fi
+    done
+fi
+
 if [ -f /custom_config/disable_admin ]; then
-  chmod 000 /var/www/html/admin
+    echo "Disable Admin Folder"
+    chmod 000 /var/www/html/admin
+else
+    echo "Enable Admin Folder"
+    chmod 775 /var/www/html/admin
 fi
