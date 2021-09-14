@@ -2,30 +2,35 @@
 a delicate balance between simplicity and power.
 
 ## Example docker-compose.yml
-The examples suppose you will have the data for your containers in `/srv/mantis`. Adapt for your server.
+The examples to start up mantisbt. Adapt for your server.
 
 ```
-mantisbt:
-  image: xlrl/mantisbt:latest
-  ports:
-    - "8989:80"
-  links:
-    - mysql
-  volumes:
-    - ./config:/var/www/html/config
-	- ./custom:/var/www/html/custom
-  restart: always
+version: '2.0'
+services:
+  mantisbt:
+    container_name: mantisbt
+    image: [docker_image]
+    ports:
+      - "8989:80"
+    links:
+      - mysql
+    restart: always
+    volumes:
+      - ./config:/var/www/html/config
+      - ./plugins:/plugins:ro
+      - ./custom_config:/custom_config:ro
 
-mysql:
-  image: mariadb:latest
-  environment:
-    - MYSQL_ROOT_PASSWORD=root
-    - MYSQL_DATABASE=bugtracker
-    - MYSQL_USER=mantisbt
-    - MYSQL_PASSWORD=mantisbt
-  volumes:
-	- ./mysql:/var/lib/mysql
-  restart: always
+  mysql:
+     container_name: mariadb
+     image: mariadb:latest
+     environment:
+       - MYSQL_ROOT_PASSWORD=root
+       - MYSQL_DATABASE=bugtracker
+       - MYSQL_USER=mantisbt
+       - MYSQL_PASSWORD=mantisbt
+     restart: always
+     volumes:
+       - ./mysql:/var/lib/mysql
 ```
 
 > You can use `mysql`/`postgres` instead of `mariadb`.
