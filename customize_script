@@ -22,7 +22,10 @@ fi
 # to customize mantisbt pages
 if [ -d /custom_config/patches ]; then
     cd /custom_config/patches
-    cp -dRv * /var/www/html
+    dirs=`ls`
+    if [ ${#r} -gt 0 ]; then
+        cp -dRv * /var/www/html
+    fi
 fi
 
 if [ -d /var/www/html/config ]; then
