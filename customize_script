@@ -43,3 +43,8 @@ if [ -d /plugins ]; then
     done
 fi
 
+if [ -f /custom_config/post_script ]; then
+    cp /custom_config/post_script /tmp
+    chmod +x /tmp/post_script
+    /tmp/post_script
+fi

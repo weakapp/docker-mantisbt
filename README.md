@@ -106,8 +106,13 @@ To do so, add `disable_admin` file in `custom_config` directory and restart the 
 
 To use custom `php.ini`, add `php.ini` file in `custom_config` directory and restart the container
 
+## Post script
+
+To run script after container start up, add `post_script` in `custom_config` directory and restart the container
+
 ## Mantisbt Plugins settings
 
 To add mantisbt plugins, create `plugins` directory and add plugin directories
 in `plugins` directory, restart the container
+
 
