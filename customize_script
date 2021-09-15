@@ -23,7 +23,7 @@ fi
 if [ -d /custom_config/patches ]; then
     cd /custom_config/patches
     dirs=`ls`
-    if [ ${#r} -gt 0 ]; then
+    if [ ${#dirs} -gt 0 ]; then
         cp -dRv * /var/www/html
     fi
 fi

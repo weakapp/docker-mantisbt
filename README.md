@@ -110,9 +110,18 @@ To use custom `php.ini`, add `php.ini` file in `custom_config` directory and res
 
 To run script after container start up, add `post_script` in `custom_config` directory and restart the container
 
-## Mantisbt Plugins settings
+## Mantisbt plugins settings
 
 To add mantisbt plugins, create `plugins` directory and add plugin directories
 in `plugins` directory, restart the container
 
+## Mantisbt pages customize
+
+To customize mantisbt pages
+
+1. create `patches` directory in `custom_config` directory
+2. put matisbt page files in `patches` directory, if files are in `core` or
+   other directories, you need to create the same directories and add files in
+   the same directories
+3. restart the container
 
