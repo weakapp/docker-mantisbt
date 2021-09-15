@@ -1,6 +1,6 @@
 if [ -f /custom_config/php.ini ]; then
     cp /custom_config/php.ini /usr/local/etc/php/php.ini
-    cat /custom_config/php.ini | grep "date.timezone" || echo 'date.timezone = "${MANTIS_TIMEZONE}"' > /usr/local/etc/php/php.ini
+    cat /custom_config/php.ini | grep "date.timezone" || echo 'date.timezone = "${MANTIS_TIMEZONE}"' >> /usr/local/etc/php/php.ini
 else
     echo 'date.timezone = "${MANTIS_TIMEZONE}"' > /usr/local/etc/php/php.ini
 fi
