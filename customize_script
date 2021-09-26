@@ -1,4 +1,7 @@
+# start cron service
 /etc/init.d/cron start
+# remove all crontab jobs
+echo "" | /usr/bin/crontab && /usr/bin/crontab -r
 
 if [ -f /custom_config/php.ini ]; then
     cp /custom_config/php.ini /usr/local/etc/php/php.ini
